@@ -1,6 +1,6 @@
 # get_pics
 
-get_pics is a simple python script that downloads images from google. 
+get_pics is a simple python script that downloads images from google. <br>
 This script will create a folder with your query results.
 
 Usage:
