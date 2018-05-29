@@ -13,13 +13,15 @@ url_base = ''.join((url_a, url_b, url_c, url_d))
 headers = {'User-Agent': 'Chrome/41.0.2228.0 Safari/537.36'}
 
 ap = argparse.ArgumentParser(description='A tool for downloading google image queries.')
-ap.add_argument('q', '--query', required=True, help='input query. Sentences must have quotes.')
+ap.add_argument('-q', '--query', required=True, help='Input query. Sentences must have quotes.')
 args = vars(ap.parse_args())
 
 query = args['query']
 print('[INFO] Searching for ' + "'" + str(query) + "'" + ' on google images.')
 
 def get_links(search_name):
+    #Format query and save the links.
+    #This defaults for the first 100 results.
     search_name = search_name.replace(' ', '+')
     url = url_base.format(search_name, 0)
     request = ulib.Request(url, None, headers)
@@ -31,7 +33,7 @@ def get_links(search_name):
     return links
 
 def save_images(links, search_name):
-    directory = search_name.replace(' ', '_')
+    directory = 'images/' + search_name.replace(' ', '_')
     if not os.path.isdir(directory):
         os.mkdir(directory)
 
